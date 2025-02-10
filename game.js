@@ -1,10 +1,10 @@
-console.log("Hello World")
+// Global variables to track scores
+let humanScore = 0;
+let computerScore = 0;
 
+// Function to get the computer's choice
 function getComputerChoice() {
-    // Generate a random number between 0 and 1
     const randomNumber = Math.random();
-
-    // Use conditional logic to return "rock", "paper", or "scissors"
     if (randomNumber < 0.33) {
         return "rock";
     } else if (randomNumber < 0.66) {
@@ -14,20 +14,41 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
-
+// Function to get the human's choice
 function getHumanChoice() {
-    // Use prompt to get the user's input
     let userInput = prompt("Enter your choice: rock, paper, or scissors");
-
-    // Convert the input to lowercase to make it case-insensitive
     userInput = userInput.toLowerCase();
 
-    // Validate the input
     if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
-        return userInput; // Return the valid choice
+        return userInput;
     } else {
-        alert("Invalid choice! Please enter rock, paper, or scissors."); // Notify the user of invalid input
-        return getHumanChoice(); // Recursively ask for input again
+        alert("Invalid choice! Please enter rock, paper, or scissors.");
+        return getHumanChoice(); // Ask again if input is invalid
     }
 }
+
+// Test the functions
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
+console.log("Human choice:", humanChoice);
+console.log("Computer choice:", computerChoice);
+
+// Example of updating scores (this will be expanded in later steps)
+if (humanChoice === computerChoice) {
+    console.log("It's a tie!");
+} else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+) {
+    console.log("Human wins this round!");
+    humanScore++; // Increment human score
+} else {
+    console.log("Computer wins this round!");
+    computerScore++; // Increment computer score
+}
+
+// Log the scores
+console.log("Human score:", humanScore);
+console.log("Computer score:", computerScore);
