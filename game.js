@@ -14,4 +14,20 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice)
+console.log(getComputerChoice());
+
+function getHumanChoice() {
+    // Use prompt to get the user's input
+    let userInput = prompt("Enter your choice: rock, paper, or scissors");
+
+    // Convert the input to lowercase to make it case-insensitive
+    userInput = userInput.toLowerCase();
+
+    // Validate the input
+    if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
+        return userInput; // Return the valid choice
+    } else {
+        alert("Invalid choice! Please enter rock, paper, or scissors."); // Notify the user of invalid input
+        return getHumanChoice(); // Recursively ask for input again
+    }
+}
