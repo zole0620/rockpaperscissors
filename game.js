@@ -27,27 +27,30 @@ function getHumanChoice() {
     }
 }
 
-// Test the functions
+// Function to play a single round
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie!");
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        humanScore++;
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        computerScore++;
+    }
+}
+
+// Test the game
 const humanChoice = getHumanChoice();
 const computerChoice = getComputerChoice();
 
-console.log("Human choice:", humanChoice);
-console.log("Computer choice:", computerChoice);
-
-// Example of updating scores (this will be expanded in later steps)
-if (humanChoice === computerChoice) {
-    console.log("It's a tie!");
-} else if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper")
-) {
-    console.log("Human wins this round!");
-    humanScore++; // Increment human score
-} else {
-    console.log("Computer wins this round!");
-    computerScore++; // Increment computer score
-}
+playRound(humanChoice, computerChoice);
 
 // Log the scores
 console.log("Human score:", humanScore);
